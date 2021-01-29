@@ -1,0 +1,11 @@
+<?php
+/* @var $block \CleverAge\Tools\Block\VersionBanner */
+?>
+
+<?php if ($block->shouldDisplay()): ?>
+    <p class="cleverage-tools-version">
+        <?= /* @escapeNotVerified */ __('Version: <strong>%1</strong>', $block->getVersion()) ?>
+        | <?= /* @escapeNotVerified */ __('Revision: <strong>%1</strong>', $block->getRevision()) ?>
+        | <?= /* @escapeNotVerified */ __('Date: <strong>%1</strong>', $block->getDate()) ?>
+    </p>
+<?php endif; ?>

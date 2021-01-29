@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="CleverAge\Tools\Api\VersionInterface" type="CleverAge\Tools\Model\Api\Version"/>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="cleverage_tools_setup_configphpgen" xsi:type="object">CleverAge\Tools\Console\Command\SetupConfigPhpGenCommand</item>
+                <item name="cleverage_tools_sql_run" xsi:type="object">CleverAge\Tools\Console\Command\SqlRunCommand</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Indexer\Model\Indexer">
+        <plugin name="CleverAge_Tools_Plugin_Magento_Indexer_Model_IndexerPlugin" type="CleverAge\Tools\Plugin\Magento\Indexer\Model\IndexerPlugin"/>
+    </type>
+</config>

@@ -1,0 +1,32 @@
+{
+    "name": "cleverage/m2-tools",
+    "description": "CleverAge generic tools for Magento 2",
+    "authors": [
+        {
+            "name": "Anaël Ollier",
+            "email": "aollier@clever-age.com",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/cleverage/m2-tools",
+    "require": {
+        "php": ">= 7.1",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "magento/framework": ">=100.0"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "cli_commands.php",
+            "registration.php"
+        ],
+        "psr-4": {
+            "CleverAge\\Tools\\": ""
+        }
+    }
+}
