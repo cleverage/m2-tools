@@ -137,6 +137,6 @@ class CronJobRunCommand extends Command
             ));
         }
 
-        return self::SUCCESS;
+        return 0;
     }
 }
