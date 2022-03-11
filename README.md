@@ -24,6 +24,9 @@ Ce module fournit des outils génériques pour les instances de Magento 2, dépl
 - Commande `bin/magento cleverage:tools:sql:run`
     - Exécuter une requête SQL sur la base Magento
 
+- Commande `bin/magento cleverage:tools:cronjob:run`
+    - Exécuter un cron job unique
+
 - Bannière de version en bas de page
     - Affiche la version, la révision et la date de déploiement (via les fichiers générés automatiquement par Capistrano)
     - Déposer des fichiers REVISION et VERSION à la racine des sources projet pour le contenu à afficher (format libre; si la fonction est activée ces fichiers sont obligatoires)
