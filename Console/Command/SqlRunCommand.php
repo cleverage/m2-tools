@@ -23,9 +23,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * Class SqlRunCommand
- */
 class SqlRunCommand extends Command
 {
     public const INPUT_ARG_QUERY = 'query';

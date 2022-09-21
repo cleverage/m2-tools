@@ -65,7 +65,7 @@ class CronJobRunCommand extends Command
     protected function configure()
     {
         $this->setName(self::COMMAND_NAME)
-            ->setDescription('Execute SQL string on Magento database');
+            ->setDescription('Run a cronjob by its name');
 
         $this->addArgument(
             self::INPUT_ARG_NAME,
