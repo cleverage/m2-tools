@@ -95,6 +95,9 @@ class SqlRunCommand extends Command
                 }
                 $result[] = $row;
             }
+            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                $result[] = $row;
+            }
 
             switch ($input->getOption(self::INPUT_OPTION_FORMAT)) {
                 case self::OPTION_FORMAT_JSON:
