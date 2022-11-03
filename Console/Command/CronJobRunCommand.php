@@ -43,12 +43,16 @@ class CronJobRunCommand extends Command
     /** @var \Magento\Framework\App\AreaList */
     private $areaList;
 
+    /** @var \Magento\Cron\Model\ScheduleFactory */
+    private $scheduleFactory;
+
     public function __construct(
         \Magento\Framework\ObjectManagerInterface $objectManager,
         \Magento\Framework\ObjectManager\ConfigLoaderInterface $configLoader,
         \Magento\Cron\Model\Config $cronConfig,
         \Magento\Framework\App\State $state,
         \Magento\Framework\App\AreaList $areaList,
+        \Magento\Cron\Model\ScheduleFactory $scheduleFactory,
         $name = null
     ) {
         parent::__construct($name);
@@ -57,6 +61,7 @@ class CronJobRunCommand extends Command
         $this->cronConfig = $cronConfig;
         $this->state = $state;
         $this->areaList = $areaList;
+        $this->scheduleFactory = $scheduleFactory;
     }
 
     /**
@@ -120,7 +125,7 @@ class CronJobRunCommand extends Command
                         $jobMethod
                     ));
 
-                    $jobInstance->{$jobMethod}();
+                    $jobInstance->{$jobMethod}($this->scheduleFactory->create());
 
                     $output->writeln(sprintf(
                         '[%s] Complete in %s',
