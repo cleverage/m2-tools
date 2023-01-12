@@ -38,8 +38,10 @@ class CommandList implements \Magento\Framework\Console\CommandListInterface
     protected function getCommandsClasses()
     {
         return [
+            \CleverAge\Tools\Console\Command\CronJobRunCommand::class,
             \CleverAge\Tools\Console\Command\SetupConfigPhpGenCommand::class,
-            \CleverAge\Tools\Console\Command\SetupDiCompileSafeCommand::class
+            \CleverAge\Tools\Console\Command\SetupDiCompileSafeCommand::class,
+            \CleverAge\Tools\Console\Command\SqlRunCommand::class
         ];
     }
 

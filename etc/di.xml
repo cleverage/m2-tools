@@ -7,9 +7,11 @@
     <type name="Magento\Framework\Console\CommandList">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="cleverage_tools_setup_configphpgen" xsi:type="object">CleverAge\Tools\Console\Command\SetupConfigPhpGenCommand</item>
-                <item name="cleverage_tools_sql_run" xsi:type="object">CleverAge\Tools\Console\Command\SqlRunCommand</item>
+                <!-- Notice: Also update \CleverAge\Tools\Console\Command\CommandList::getCommandsClasses when adding items here -->
                 <item name="cleverage_tools_cronjob_run" xsi:type="object">CleverAge\Tools\Console\Command\CronJobRunCommand</item>
+                <item name="cleverage_tools_setup_configphpgen" xsi:type="object">CleverAge\Tools\Console\Command\SetupConfigPhpGenCommand</item>
+                <item name="cleverage_tools_setup_compilesafe" xsi:type="object">CleverAge\Tools\Console\Command\SetupDiCompileSafeCommand</item>
+                <item name="cleverage_tools_sql_run" xsi:type="object">CleverAge\Tools\Console\Command\SqlRunCommand</item>
             </argument>
         </arguments>
     </type>
