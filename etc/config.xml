@@ -3,6 +3,7 @@
         <cleverage_tools>
             <version_banner>
                 <enable_frontend>0</enable_frontend>
+                <enable_meta>1</enable_meta>
                 <enable_adminhtml>1</enable_adminhtml>
             </version_banner>
         </cleverage_tools>

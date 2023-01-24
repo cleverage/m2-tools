@@ -1,7 +1,6 @@
 <?php
 /* @var $block \CleverAge\Tools\Block\VersionBanner */
 ?>
-
 <?php if ($block->shouldDisplay()): ?>
     <p class="cleverage-tools-version">
         <?= /* @escapeNotVerified */ __('Version: <strong>%1</strong>', $block->getVersion()) ?>

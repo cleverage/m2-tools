@@ -15,7 +15,7 @@ namespace CleverAge\Tools\Block;
 
 use Magento\Framework\View\Element\Template;
 
-class VersionBanner extends Template
+class VersionMeta extends Template
 {
     /**
      * @var \CleverAge\Tools\Helper\Block
@@ -33,7 +33,7 @@ class VersionBanner extends Template
 
     public function shouldDisplay()
     {
-        return $this->blockHelper->shouldDisplay('frontend');
+        return $this->blockHelper->shouldDisplay('meta');
     }
 
     public function getVersion()

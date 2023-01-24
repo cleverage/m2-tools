@@ -1,0 +1,9 @@
+<?php
+/* @var $block \CleverAge\Tools\Block\VersionMeta */
+/* @var $escaper \Magento\Framework\Escaper */
+?>
+<?php if ($block->shouldDisplay()): ?>
+    <meta name="app-version" content="<?= $escaper->escapeHtmlAttr($block->getVersion()) ?>">
+    <meta name="app-revision" content="<?= $escaper->escapeHtmlAttr($block->getRevision()) ?>">
+    <meta name="app-date" content="<?= $escaper->escapeHtmlAttr($block->getDate()) ?>">
+<?php endif; ?>
