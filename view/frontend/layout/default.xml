@@ -3,7 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="head.additional">
-            <block class="CleverAge\Tools\Block\VersionMeta"
+            <block class="CleverAge\Tools\Block\Head\VersionMeta"
                    name="cleverage_tools_version_meta"
                    template="CleverAge_Tools::version-meta.phtml" />
         </referenceBlock>

@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace CleverAge\Tools\Block;
+namespace CleverAge\Tools\Block\Head;
 
 use Magento\Framework\View\Element\Template;
 
