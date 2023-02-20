@@ -88,7 +88,7 @@ class SqlRunCommand extends Command
 
         if ($stmt->rowCount()) {
             $result = [];
-            $headers = null;
+            $headers = [];
             for ($i = 0; $i < 3 && ($row = $stmt->fetch(\PDO::FETCH_ASSOC)); $i++) {
                 if ($headers === null) {
                     $headers = array_keys($row);
