@@ -61,7 +61,7 @@ class SqlRunCommand extends Command
         $this->addArgument(
             self::INPUT_ARG_QUERY,
             InputArgument::REQUIRED,
-            'SQL Query.'
+            'SQL Query (use - to use STDIN).'
         )->addOption(
             self::INPUT_OPTION_FORMAT,
             'f',
@@ -79,6 +79,9 @@ class SqlRunCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $query = $input->getArgument(self::INPUT_ARG_QUERY);
+        if ($query === '-') {
+            $query = file_get_contents('php://stdin');
+        }
         $connection = $this->getConnection($input->getOption(self::INPUT_OPTION_CONNECTION));
 
         $stmt = $connection->query($query);
