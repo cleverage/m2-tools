@@ -29,12 +29,14 @@ class SqlRunCommand extends Command
     public const INPUT_ARG_QUERY = 'query';
     public const INPUT_OPTION_CONNECTION = 'connection';
     public const INPUT_OPTION_FORMAT = 'format';
+    public const INPUT_OPTION_HEADERS = 'headers';
 
     public const OPTION_FORMAT_TABLE = 'table';
     public const OPTION_FORMAT_JSON = 'json';
     public const OPTION_FORMAT_JSON_PRETTY = 'pretty-json';
     public const OPTION_FORMAT_CSV = 'csv';
     public const OPTION_FORMAT_SCRIPT = 'script';
+    public const OPTION_FORMAT_RAW = 'raw';
 
     public const COMMAND_NAME = 'cleverage:tools:sql:run';
 
@@ -70,6 +72,12 @@ class SqlRunCommand extends Command
             'Output format (default is human-readable table).',
             self::OPTION_FORMAT_TABLE
         )->addOption(
+            self::INPUT_OPTION_HEADERS,
+            'H',
+            InputOption::VALUE_OPTIONAL,
+            'Outputs headers (where applicable).',
+            true
+        )->addOption(
             self::INPUT_OPTION_CONNECTION,
             'c',
             InputOption::VALUE_REQUIRED,
@@ -94,7 +102,7 @@ class SqlRunCommand extends Command
             $result = [];
             $headers = [];
             for ($i = 0; $i < 3 && ($row = $stmt->fetch(\PDO::FETCH_ASSOC)); $i++) {
-                if ($headers === null) {
+                if (empty($headers)) {
                     $headers = array_keys($row);
                 }
                 $result[] = $row;
@@ -114,7 +122,9 @@ class SqlRunCommand extends Command
 
                 case self::OPTION_FORMAT_CSV:
                     $csv = new Csv(new File());
-                    $csv->appendData('php://stdout', [$headers]);
+                    if ($input->getOption(self::INPUT_OPTION_HEADERS)) {
+                        $csv->appendData('php://stdout', [$headers]);
+                    }
                     $csv->appendData('php://stdout', $result);
                     break;
 
@@ -130,11 +140,23 @@ class SqlRunCommand extends Command
                     }
                     break;
 
+                case self::OPTION_FORMAT_RAW:
+                    if ($input->getOption(self::INPUT_OPTION_HEADERS)) {
+                        echo implode("\t", $headers) . "\n";
+                    }
+                    foreach ($result as $record) {
+                        echo implode("\t", $record) . "\n";
+                    }
+                    break;
+
                 case self::OPTION_FORMAT_TABLE:
                 default:
-                    (new Table($output))->setHeaders($headers)
-                    ->setRows($result)
-                    ->render();
+                    $table = new Table($output);
+                    if ($input->getOption(self::INPUT_OPTION_HEADERS)) {
+                        $table->setHeaders($headers);
+                    }
+                    $table->setRows($result)
+                        ->render();
             }
         }
     }
