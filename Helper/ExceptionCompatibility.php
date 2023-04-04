@@ -31,7 +31,7 @@ class ExceptionCompatibility
             return new \RuntimeException(
                 "[$errorType] {$e->getMessage()} in {$e->getFile()}:{$e->getLine()}",
                 $e->getCode(),
-                $e->getPrevious()
+                $e
             );
         }
         return $e;
