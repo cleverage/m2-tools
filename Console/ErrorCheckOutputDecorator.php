@@ -9,8 +9,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
-
 namespace CleverAge\Tools\Console;
 
 use Symfony\Component\Console\Formatter\OutputFormatterInterface;
@@ -55,7 +53,7 @@ class ErrorCheckOutputDecorator implements OutputInterface
         return $this->decorated->setVerbosity($level);
     }
 
-    public function getVerbosity()
+    public function getVerbosity(): int
     {
         return $this->decorated->getVerbosity();
     }
@@ -65,27 +63,27 @@ class ErrorCheckOutputDecorator implements OutputInterface
         return $this->decorated->setDecorated($decorated);
     }
 
-    public function isDecorated()
+    public function isDecorated(): bool
     {
         return $this->decorated->isDecorated();
     }
 
-    public function isQuiet()
+    public function isQuiet(): bool
     {
         return $this->decorated->isQuiet();
     }
 
-    public function isVerbose()
+    public function isVerbose(): bool
     {
         return $this->decorated->isVerbose();
     }
 
-    public function isDebug()
+    public function isDebug(): bool
     {
         return $this->decorated->isDebug();
     }
 
-    public function isVeryVerbose()
+    public function isVeryVerbose(): bool
     {
         return $this->decorated->isVeryVerbose();
     }
@@ -95,7 +93,7 @@ class ErrorCheckOutputDecorator implements OutputInterface
         return $this->decorated->setFormatter($formatter);
     }
 
-    public function getFormatter()
+    public function getFormatter(): OutputFormatterInterface
     {
         return $this->decorated->getFormatter();
     }
