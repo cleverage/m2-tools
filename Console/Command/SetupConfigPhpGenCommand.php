@@ -9,8 +9,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
-
 namespace CleverAge\Tools\Console\Command;
 
 use Magento\Framework\Config\ConfigOptionsListConstants;
@@ -72,7 +70,7 @@ class SetupConfigPhpGenCommand extends Command
         parent::configure();
     }
 
-    public function run(InputInterface $input, OutputInterface $output)
+    public function run(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln("Regenerating config.php...");
         $this->createModulesConfig([]);
